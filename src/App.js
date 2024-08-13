@@ -180,7 +180,7 @@ function App() {
 
 
       <section id='pg3' className='flex items-center justify-center h-screen hidden'>
-      <div className="absolute top-4 left-4 bg-blue_btn w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-yellow-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={goBack2}>
+      <div className="absolute top-4 left-4 bg-blue_btn w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-sky-300 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={goBack2}>
           <h1 className="text-lg font-bryndan text-center">Back!</h1>
       </div>
 
@@ -198,7 +198,7 @@ function App() {
                     <h1 className="text-3xl font-bold">Quotidian</h1>
                   </div>
                 </div>
-                <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_2 px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_ans px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Quotidian</h1>
                     <p className="text-sm">ADJ</p>
@@ -218,7 +218,7 @@ function App() {
                     <h1 className="text-3xl font-bold">Tedium</h1>
                   </div>
                 </div>
-                <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_1 px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 h-full w-full rounded-xl bg-darkblue_ans px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Tedium</h1>
                     <p className="text-sm">ADJ</p>
@@ -238,12 +238,12 @@ function App() {
                     <h1 className="text-3xl font-bold">Vertigo</h1>
                   </div>
                 </div>
-                <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_ans px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Vertigo</h1>
-                    <p className="text-lg">N</p>
-                    <p className="text-base">Severe dizziness</p>
-                    <p className="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                    <p className="text-sm">N</p>
+                    <p className="text-lg hover:scale-110 transition-all duration-300">Severe dizziness</p>
+                    <p className="mt-2 rounded-md py-1 px-2 text-sm hover:scale-110 transition-all duration-300">
                     When you test potential plane pilots for susceptibilty to spells of vertigo, be sure to hand out airbags.
                     </p>
                   </div>
@@ -258,12 +258,12 @@ function App() {
                     <h1 className="text-3xl font-bold">Waylay</h1>
                   </div>
                 </div>
-                <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 h-full w-full rounded-xl bg-darkblue_ans px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Waylay</h1>
-                    <p className="text-lg">V</p>
-                    <p className="text-base">Ambush; Lie in wait</p>
-                    <p className="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                    <p className="text-sm">V</p>
+                    <p className="text-lg hover:scale-110 transition-all duration-300">Ambush; Lie in wait</p>
+                    <p className="mt-2 rounded-md  py-1 px-2 text-sm hover:scale-110 transition-all duration-300">
                       They agreed to waylay their victim as he passed through the dark alley going home.
                     </p>
                   </div>
@@ -278,12 +278,12 @@ function App() {
                     <h1 className="text-3xl font-bold">Wistful</h1>
                   </div>
                 </div>
-                <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_ans px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Wistful</h1>
-                    <p className="text-lg">ADJ</p>
-                    <p className="text-base">Vaguely longing; Sadly pensive</p>
-                    <p className="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                    <p className="text-sm">ADJ</p>
+                    <p className="text-lg hover:scale-110 transition-all duration-300">Vaguely longing; Sadly pensive</p>
+                    <p className="mt-2 rounded-md py-1 px-2 text-sm hover:scale-110 transition-all duration-300">
                       With a last wistful galnce at the happy couple dancing in the hall, Sue headed back to her room to study for her exam.
                     </p>
                   </div>
@@ -298,12 +298,12 @@ function App() {
                     <h1 className="text-3xl font-bold">Zealot</h1>
                   </div>
                 </div>
-                <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 h-full w-full rounded-xl bg-darkblue_ans px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
-                    <h1 className="text-3xl font-bold">Definition</h1>
-                    <p className="text-lg">N</p>
-                    <p className="text-base">Fanatic; person who shows excessive zeal</p>
-                    <p className="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                    <h1 className="text-3xl font-bold">Zealot</h1>
+                    <p className="text-sm">N</p>
+                    <p className="text-lg hover:scale-110 transition-all duration-300">Fanatic; person who shows excessive zeal</p>
+                    <p className="mt-2 rounded-md  py-1 px-2 text-sm hover:scale-110 transition-all duration-300">
                       Though Glenn was devout, he was no zealot; he never tried to force his religious beliefs on his friends.
                     </p>
                   </div>

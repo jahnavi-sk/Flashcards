@@ -21,6 +21,8 @@ module.exports = {
         pinkans:'#BE6C7F',
         lightpinkans:'#FFB9C9',
         darkblueans:'#6397D7',
+        blue_ans:'#D3E2F5',
+        darkblue_ans:'#919BB5'
         
       },
     },
