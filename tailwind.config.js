@@ -5,11 +5,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      rotate: {
+        rotatey : 'rotateY(180deg)',
+      },
       fontFamily: {
         bryndan: ['BryndanWriteBook', 'sans-serif'],
       },
       colors:{
-        babyyellow:'#FFFBF2'
+        babyyellow:'#FFFBF2',
+        pinkbrown:'#D5B4BB',
+        darkrose:'#CD8495'
       },
     },
   },

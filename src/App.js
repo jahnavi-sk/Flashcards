@@ -1,45 +1,41 @@
 import './App.css';
 import { useState } from 'react';
 function App() {
-
-  // const [flipped, setFlipped] = useState(false);
- 
-
-  const [flipped1, setFlipped1] = useState(false);
-  const [flipped2, setFlipped2] = useState(false);
-  const [flipped3, setFlipped3] = useState(false);
-  const [flipped4, setFlipped4] = useState(false);
-  const [flipped5, setFlipped5] = useState(false);
-  const [flipped6, setFlipped6] = useState(false);
-
-
-
-  // const [flipped, setFlipped] = useState(Array(6).fill(false));
-
-  
-  const handleClick1 = () => {
-    setFlipped1(!flipped1);
-  };
-  const handleClick2 = () => {
-    setFlipped2(!flipped2);
-  };const handleClick3 = () => {
-    setFlipped3(!flipped3);
-  };const handleClick4 = () => {
-    setFlipped4(!flipped4);
-  };const handleClick5 = () => {
-    setFlipped5(!flipped5);
-  };const handleClick6 = () => {
-    setFlipped6(!flipped6);
-  };
   
   function pgChange(){
     document.getElementById('pg1').classList.add('hidden');
     document.getElementById('pg2').classList.remove('hidden');
   }
 
+  function showDef(){
+    document.getElementById('word1').classList.add('hidden');
+    document.getElementById('def1').classList.remove('hidden');
+    // document.getElementById('word1').classList.add('transform [transform:rotateY(180deg)]');
+    // document.getElementById('def1').classList.add('text-2xl)]');
+    document.getElementById('word1').classList.add('transform', 'y-180');
+    document.getElementById('def1').classList.remove('transform', 'y-180');
+
+
+
+    // document.getElementById('word1').classList.add('transform:rotateY(180deg)');
+
+  }
+
+  function showWord(){
+    document.getElementById('def1').classList.add('hidden');
+    document.getElementById('word1').classList.remove('hidden');
+    // document.getElementById('word1').classList.remove('transform', 'rotatey');
+    // document.getElementById('def1').classList.add('transform', 'y-180');
+
+    // document.getElementById('word1').classList.remove('transform [transform:rotateY(180deg)]');
+
+  }
+
   function goBack1(){
     document.getElementById('pg2').classList.add('hidden');
     document.getElementById('pg1').classList.remove('hidden');
+    
+    
   }
   return (
     <div>
@@ -51,30 +47,140 @@ function App() {
 
       <section id='pg2' className='flex flex-col items-center justify-center h-screen hidden'>
       
-        
+      <div onClick={goBack1} className="fixed top-4 left-4 bg-babyyellow w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-yellow-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer" onClick={pgChange}>
+        <h1 className='text-sm font-bryndan text-center'>Back!</h1>
+      </div>
 
-    <div className='bg-cover flex flex-col items-center justify-center '>
-              <div className='grid lg:grid-cols-3 gap-12'>
-                <div className='hover:scale-110 transition-all duration-300 h-80 w-80 bg-babyyellow border-4 border-black cursor-pointer flex flex-col items-center justify-center text-center'>
-                  <h1>Word 1</h1>
+        <div className='bg-cover flex flex-col items-center justify-center '>
+            <div className='grid lg:grid-cols-3 gap-12 [perspective:1000px]'>
+
+            <div class="group h-80 w-80 [perspective:1000px]">
+              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-rose-300 shadow-xl shadow-black/40 [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Anarchist</h1>
+                  </div>
                 </div>
-                <div className='hover:scale-110 transition-all duration-300 h-80 w-80 bg-babyyellow border-4 border-black cursor-pointer flex flex-col items-center justify-center text-center'>
-                  <h1>Word 1</h1>
-                </div>
-                <div className='hover:scale-110 transition-all duration-300 h-80 w-80 bg-babyyellow border-4 border-black cursor-pointer flex flex-col items-center justify-center text-center'>
-                  <h1>Word 1</h1>
-                </div>
-                <div className='hover:scale-110 transition-all duration-300 h-80 w-80 bg-babyyellow border-4 border-black cursor-pointer flex flex-col items-center justify-center text-center'>
-                  <h1>Word 1</h1>
-                </div>
-                <div className='hover:scale-110 transition-all duration-300 h-80 w-80 bg-babyyellow border-4 border-black cursor-pointer flex flex-col items-center justify-center text-center'>
-                  <h1>Word 1</h1>
-                </div>
-                <div className='hover:scale-110 transition-all duration-300 h-80 w-80 bg-babyyellow border-4 border-black cursor-pointer flex flex-col items-center justify-center text-center'>
-                  <h1>Word 1</h1>
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Definition</h1>
+                    <p class="text-lg">ADJ</p>
+                    <p class="text-base">A person who seeks to overturn the established government; advocate of abolishing authority/.</p>
+                    <p class="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                      Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>  
+            </div>
+
+            <div class="group h-80 w-80 [perspective:1000px]">
+              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-darkrose shadow-xl shadow-black/40 [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Anarchist</h1>
+                  </div>
+                </div>
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Definition</h1>
+                    <p class="text-lg">ADJ</p>
+                    <p class="text-base">A person who seeks to overturn the established government; advocate of abolishing authority/.</p>
+                    <p class="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                      Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group h-80 w-80 [perspective:1000px]">
+              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-rose-300 shadow-xl shadow-black/40 [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Anarchist</h1>
+                  </div>
+                </div>
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Definition</h1>
+                    <p class="text-lg">ADJ</p>
+                    <p class="text-base">A person who seeks to overturn the established government; advocate of abolishing authority/.</p>
+                    <p class="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                      Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group h-80 w-80 [perspective:1000px]">
+              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-darkrose shadow-xl shadow-black/40 [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Anarchist</h1>
+                  </div>
+                </div>
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Definition</h1>
+                    <p class="text-lg">ADJ</p>
+                    <p class="text-base">A person who seeks to overturn the established government; advocate of abolishing authority/.</p>
+                    <p class="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                      Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group h-80 w-80 [perspective:1000px]">
+              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-rose-300 shadow-xl shadow-black/40 [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Anarchist</h1>
+                  </div>
+                </div>
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Definition</h1>
+                    <p class="text-lg">ADJ</p>
+                    <p class="text-base">A person who seeks to overturn the established government; advocate of abolishing authority/.</p>
+                    <p class="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                      Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group h-80 w-80 [perspective:1000px]">
+              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-darkrose shadow-xl shadow-black/40 [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Anarchist</h1>
+                  </div>
+                </div>
+                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <div class="flex min-h-full flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold">Definition</h1>
+                    <p class="text-lg">ADJ</p>
+                    <p class="text-base">A person who seeks to overturn the established government; advocate of abolishing authority/.</p>
+                    <p class="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
+                      Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+              
+
+
+                
+
+              </div>
+        </div>  
+ 
       </section>
     </div>
   );
