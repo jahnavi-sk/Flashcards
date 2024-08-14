@@ -1,4 +1,5 @@
 import './App.css';
+import 'boxicons'
 import { useState } from 'react';
 function App() {
   
@@ -36,25 +37,31 @@ function App() {
   return (
     <div>
       <section id='pg1' className={`flex items-center justify-center h-screen ${currentPage === 'pg1' ? '' : 'hidden'}`}>
-        <div className="flex flex-col justify-center align-middle bg-babyyellow w-1/2 h-64 md:h-80 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-yellow-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer animate-bounce-slow" onClick={() => handlePageChange('pg2')}>
-          <h1 className='text-5xl md:text-7xl lg:text-9xl font-bryndan text-center'>Let's get started!</h1>
+        <div className="flex flex-col justify-center align-middle bg-babyyellow w-80 sm:w-1/2 h-64 md:h-80 border-4 border-black p-8 rounded-2xl scale-100 transition-all duration-300    cursor-pointer animate-bounce-slow hover:scale-110 hover:bg-yellow-200 hover:border-black " onClick={() => handlePageChange('pg2')}>
+          <h1 className='text-5xl lg:text-9xl font-bryndan text-center'>Let's get started!</h1>
         </div>
       </section>
 
       <section id='pg2' className={`flex flex-col items-center justify-center h-screen ${currentPage === 'pg2' ? '' : 'hidden'}`}>
       
-      <div className="absolute top-4 left-4 bg-pinkbrown w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={() => handlePageChange('pg1')}>
-          <h1 className="text-lg font-bryndan text-center">Back!</h1>
+      <div className="hidden xl:block absolute top-4 left-4 bg-pinkbrown w-16 h-14 border-4 border-black  rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={() => handlePageChange('pg1')}>
+          <h1 className="text-2xl mt-3 font-bryndan text-center">Back!</h1>
       </div>
 
-      <div className="absolute bottom-4 right-4 bg-pinkbrown w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={pgChange2}>
-          <h1 className="text-lg font-bryndan text-center animate-bounce">Next!</h1>
+      
+      {/* <i className='"absolute top-4 left-4 w-10 h-10 bx bx-arrow-back'></i> */}
+      <box-icon name='arrow-back' class="block xl:hidden absolute top-2 left-4 w-10 h-10 cursor-pointer" onClick={() => handlePageChange('pg1')}></box-icon>
+      <box-icon name='arrow-back' flip='horizontal' class="block xl:hidden absolute top-2 right-4 w-10 h-10 cursor-pointer" onClick={() => handlePageChange('pg3')}></box-icon>
+      
+      <div className="hidden xl:block absolute bottom-4 right-4 bg-pinkbrown w-16 h-14 border-4 border-black  rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={() => handlePageChange('pg3')}>
+
+          <h1 className="text-2xl font-bryndan text-center mt-3 animate-bounce">Next!</h1>
       </div>
 
       
 
-        <div className='bg-cover flex flex-col items-center justify-center '>
-            <div className='grid lg:grid-cols-3 gap-12 [perspective:1000px]'>
+        <div className='mt-10 md:mt-0 bg-cover flex flex-col items-center justify-center '>
+            <div className='max-h-[calc(100vh-4rem)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 [perspective:1000px]'>
 
             <div className="group h-80 w-80 [perspective:1000px]">
               <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] ">
@@ -185,17 +192,18 @@ function App() {
  
       </section>
 
-      <section id='pg3' className='flex items-center justify-center transition-all duration-500 h-screen hidden'>
-      <div className="absolute top-4 left-4 bg-blue_btn w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-sky-300 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={goBack2}>
-          <h1 className="text-lg font-bryndan text-center">Back!</h1>
+      <section id='pg3' className={`flex items-center justify-center h-screen ${currentPage === 'pg3' ? '' : 'hidden'}`}>
+      <div className="hidden xl:block absolute top-4 left-4 bg-blue_btn w-16 h-14 border-4 border-black rounded-2xl scale-100 hover:bg-sky-300 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={() => handlePageChange('pg2')}>
+          <h1 className="text-2xl mt-3 font-bryndan text-center">Back!</h1>
       </div>
 
+      <box-icon name='arrow-back' class="block xl:hidden absolute top-2 left-4 w-10 h-10 cursor-pointer" onClick={() => handlePageChange('pg2')}></box-icon>
       
 
       
 
-        <div className='bg-cover flex flex-col items-center justify-center '>
-            <div className='grid lg:grid-cols-3 gap-12 [perspective:1000px]'>
+        <div className='mt-10 md:mt-0 bg-cover flex flex-col items-center justify-center '>
+            <div className='max-h-[calc(100vh-4rem)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 [perspective:1000px]'>
 
             <div className="group h-80 w-80 [perspective:1000px]">
               <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
