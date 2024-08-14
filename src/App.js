@@ -2,6 +2,13 @@ import './App.css';
 import { useState } from 'react';
 function App() {
   
+
+  const [currentPage, setCurrentPage] = useState('pg1');
+
+  const handlePageChange = (nextPage) => {
+    setCurrentPage(nextPage);
+  };
+
   function pgChange(){
     document.getElementById('pg1').classList.add('hidden');
     document.getElementById('pg2').classList.remove('hidden');
@@ -28,20 +35,20 @@ function App() {
   }
   return (
     <div>
-      <section id='pg1' className='flex items-center justify-center h-screen'>
-        <div className="flex flex-col justify-center align-middle bg-babyyellow w-1/2 h-80 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-yellow-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer " onClick={pgChange}>
-          <h1 className='text-9xl font-bryndan text-center'>Let's get started!</h1>
+      <section id='pg1' className={`flex items-center justify-center h-screen ${currentPage === 'pg1' ? '' : 'hidden'}`}>
+        <div className="flex flex-col justify-center align-middle bg-babyyellow w-1/2 h-64 md:h-80 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-yellow-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer animate-bounce-slow" onClick={() => handlePageChange('pg2')}>
+          <h1 className='text-5xl md:text-7xl lg:text-9xl font-bryndan text-center'>Let's get started!</h1>
         </div>
       </section>
 
-      <section id='pg2' className='flex flex-col items-center justify-center h-screen hidden'>
+      <section id='pg2' className={`flex flex-col items-center justify-center h-screen ${currentPage === 'pg2' ? '' : 'hidden'}`}>
       
-      <div className="absolute top-4 left-4 bg-pinkbrown w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={goBack1}>
+      <div className="absolute top-4 left-4 bg-pinkbrown w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={() => handlePageChange('pg1')}>
           <h1 className="text-lg font-bryndan text-center">Back!</h1>
       </div>
 
       <div className="absolute bottom-4 right-4 bg-pinkbrown w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={pgChange2}>
-          <h1 className="text-lg font-bryndan text-center">Next!</h1>
+          <h1 className="text-lg font-bryndan text-center animate-bounce">Next!</h1>
       </div>
 
       
@@ -50,7 +57,7 @@ function App() {
             <div className='grid lg:grid-cols-3 gap-12 [perspective:1000px]'>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] ">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-rose-300 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Anarchist</h1>
@@ -70,7 +77,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-darkrose shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Implacable</h1>
@@ -90,7 +97,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-rose-300 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Irrevocable</h1>
@@ -110,7 +117,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-darkrose shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Mogul</h1>
@@ -130,7 +137,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-rose-300 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Panache</h1>
@@ -150,7 +157,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-darkrose shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Ramification</h1>
@@ -178,8 +185,7 @@ function App() {
  
       </section>
 
-
-      <section id='pg3' className='flex items-center justify-center h-screen hidden'>
+      <section id='pg3' className='flex items-center justify-center transition-all duration-500 h-screen hidden'>
       <div className="absolute top-4 left-4 bg-blue_btn w-10 h-10 border-4 border-black p-8 rounded-2xl scale-100 hover:bg-sky-300 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={goBack2}>
           <h1 className="text-lg font-bryndan text-center">Back!</h1>
       </div>
@@ -192,7 +198,7 @@ function App() {
             <div className='grid lg:grid-cols-3 gap-12 [perspective:1000px]'>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_1 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Quotidian</h1>
@@ -212,7 +218,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_2 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Tedium</h1>
@@ -232,7 +238,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_1 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Vertigo</h1>
@@ -252,7 +258,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_2 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Waylay</h1>
@@ -272,7 +278,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_1 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Wistful</h1>
@@ -292,7 +298,7 @@ function App() {
             </div>
 
             <div className="group h-80 w-80 [perspective:1000px]">
-              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_2 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Zealot</h1>
@@ -318,6 +324,9 @@ function App() {
               </div>
         </div>  
       </section>
+      
+
+
       
     </div>
   );
