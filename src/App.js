@@ -1,23 +1,42 @@
 import './App.css';
 import 'boxicons'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 function App() {
   
   const [flippedCardIndex, setFlippedCardIndex] = useState(null);
+  const [cards, setCards] = useState([]);
+
+
+  useEffect(() => {
+    // Fetch cards from the API
+    axios.get('/api/cards')
+      .then((response) => {
+        setCards(response.data); // Save data to state
+        console.log("rsp=", response.data)
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the cards!", error);
+      });
+  }, []);
 
   const handleClick = (index) => {
     setFlippedCardIndex(flippedCardIndex === index ? null : index);
   };
   
-  const cards = [
-    { title: 'Implacable', description: 'Incapable of being pacified.', type:'ADJ', sentence:'Madame Defarge was the implacable enemy of the Evermonde family' },
-    { title: 'Irrevocable', description: 'Unalterable, Irreversible', type:'ADJ', sentence:'As Sue dropped the letter into the mailbox, she suddenly had seconf thoughts and wanted to take it back, but she could not; her action was irrevocable.' },
-    { title: 'Anarchist', description: 'A person who seeks to overturn the established government; advocate of abolishing authority',type:'ADJ', sentence:'Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.' },
-    { title: 'Panache', description: 'Flair; Flamboyance', type:'N', sentence: 'Many perfomers imitate Noel Coward, but few have his panache and sense of style.'},
-    { title: 'Mogul', description: 'A powerful person.', type:'ADJ', sentence:'The oil moguls made great profits when the price of gasoline rose.' },
-    { title: 'Ramification', description: 'Branching out; subdivision', type:'N', sentence:'We must examine all the ramifications of this problem.' },
-    // Add more cards here
-  ];
+  // const cards = [
+  //   { word: 'Implacable', definition: 'Incapable of being pacified.', type:'ADJ', example:'Madame Defarge was the implacable enemy of the Evermonde family' },
+  //   { word: 'Irrevocable', definition: 'Unalterable, Irreversible', type:'ADJ', example:'As Sue dropped the letter into the mailbox, she suddenly had seconf thoughts and wanted to take it back, but she could not; her action was irrevocable.' },
+  //   { word: 'Anarchist', definition: 'A person who seeks to overturn the established government; advocate of abolishing authority',type:'ADJ', example:'Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.' },
+  //   { word: 'Panache', definition: 'Flair; Flamboyance', type:'N', example: 'Many perfomers imitate Noel Coward, but few have his panache and sense of style.'},
+  //   { word: 'Mogul', definition: 'A powerful person.', type:'ADJ', example:'The oil moguls made great profits when the price of gasoline rose.' },
+  //   { word: 'Ramification', definition: 'Branching out; subdivision', type:'N', example:'We must examine all the ramifications of this problem.' },
+  // ];
+
+  
+
+
 
   const [currentPage, setCurrentPage] = useState('pg1');
 
@@ -49,6 +68,8 @@ function App() {
     document.getElementById('pg2').classList.remove('hidden');
     
   }
+
+  // console.log("cards info=", cards[0]);
   return (
     <div>
       <section id='pg1' className={`flex items-center justify-center h-screen ${currentPage === 'pg1' ? '' : 'hidden'}`}>
@@ -99,7 +120,7 @@ function App() {
             </div>  */}
 
 
-      {cards.map((card, index) => (
+      {cards.slice(0, 6).map((card, index) => (
         <div
           key={index}
           className="group h-80 w-80 m-4 [perspective:1000px]"
@@ -113,16 +134,16 @@ function App() {
             <div className={`absolute inset-0 h-full w-full rounded-xl shadow-xl shadow-black/40 [backface-visibility:hidden] ${
           index % 2 === 0 ? 'bg-rose-300' : 'bg-darkrose'}`}>
               <div className="flex min-h-full flex-col items-center justify-center">
-                <h1 className="text-3xl font-bold">{card.title}</h1>
+                <h1 className="text-3xl font-bold">{card.word}</h1>
               </div>
             </div>
             <div className={`absolute inset-0 h-full w-full rounded-xl bg-darkrose px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden] ${index % 2 === 0 ? 'bg-lightpinkans' : 'bg-pinkans'}`}>
               <div className="flex min-h-full flex-col items-center justify-center">
-                <h1 className="text-3xl font-bold">{card.title}</h1>
-                <p className="text-sm">ADJ</p>
-                <p className="text-lg hover:scale-110 transition-all duration-300">{card.description}</p>
+                <h1 className="text-3xl font-bold">{card.word}</h1>
+                <p className="text-sm">{card.type}</p>
+                <p className="text-lg hover:scale-110 transition-all duration-300">{card.definition}</p>
                 <p className="mt-2 rounded-md  py-1 px-2 text-sm hover:scale-110 transition-all duration-300">
-                      Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
+                {card.sentence}
                     </p>
               </div>
             </div>
@@ -254,9 +275,9 @@ function App() {
             <div className='max-h-[calc(100vh-4rem)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 [perspective:1000px]'>
 
 
-            {cards.map((card, index) => (
+            {cards.slice(6, 12).map((card, index) => (
               <div
-                key={index}
+                key={index+6}
                 className="group h-80 w-80 m-4 [perspective:1000px]"
                 onClick={() => handleClick(index)}
               >
@@ -268,14 +289,14 @@ function App() {
                   <div className={`absolute inset-0 h-full w-full rounded-xl shadow-xl shadow-black/40 [backface-visibility:hidden] ${
                 index % 2 === 0 ? 'bg-blue_1' : 'bg-blue_2'}`}>
                     <div className="flex min-h-full flex-col items-center justify-center">
-                      <h1 className="text-3xl font-bold">{card.title}</h1>
+                      <h1 className="text-3xl font-bold">{card.word}</h1>
                     </div>
                   </div>
                   <div className={`absolute inset-0 h-full w-full rounded-xl px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden] ${index % 2 === 0 ? 'bg-blue_ans' : 'bg-darkblue_ans'}`}>
                     <div className="flex min-h-full flex-col items-center justify-center">
-                      <h1 className="text-3xl font-bold">{card.title}</h1>
+                      <h1 className="text-3xl font-bold">{card.word}</h1>
                       <p className="text-sm">ADJ</p>
-                      <p className="text-lg hover:scale-110 transition-all duration-300">{card.description}</p>
+                      <p className="text-lg hover:scale-110 transition-all duration-300">{card.definition}</p>
                       <p className="mt-2 rounded-md  py-1 px-2 text-sm hover:scale-110 transition-all duration-300">
                             Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
                           </p>
