@@ -3,6 +3,21 @@ import 'boxicons'
 import { useState } from 'react';
 function App() {
   
+  const [flippedCardIndex, setFlippedCardIndex] = useState(null);
+
+  const handleClick = (index) => {
+    setFlippedCardIndex(flippedCardIndex === index ? null : index);
+  };
+  
+  const cards = [
+    { title: 'Implacable', description: 'Incapable of being pacified.', type:'ADJ', sentence:'Madame Defarge was the implacable enemy of the Evermonde family' },
+    { title: 'Irrevocable', description: 'Unalterable, Irreversible', type:'ADJ', sentence:'As Sue dropped the letter into the mailbox, she suddenly had seconf thoughts and wanted to take it back, but she could not; her action was irrevocable.' },
+    { title: 'Anarchist', description: 'A person who seeks to overturn the established government; advocate of abolishing authority',type:'ADJ', sentence:'Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.' },
+    { title: 'Panache', description: 'Flair; Flamboyance', type:'N', sentence: 'Many perfomers imitate Noel Coward, but few have his panache and sense of style.'},
+    { title: 'Mogul', description: 'A powerful person.', type:'ADJ', sentence:'The oil moguls made great profits when the price of gasoline rose.' },
+    { title: 'Ramification', description: 'Branching out; subdivision', type:'N', sentence:'We must examine all the ramifications of this problem.' },
+    // Add more cards here
+  ];
 
   const [currentPage, setCurrentPage] = useState('pg1');
 
@@ -63,7 +78,7 @@ function App() {
         <div className='mt-10 md:mt-0 bg-cover flex flex-col items-center justify-center '>
             <div className='max-h-[calc(100vh-4rem)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 [perspective:1000px]'>
 
-            <div className="group h-80 w-80 [perspective:1000px]">
+            {/* <div className="group h-80 w-80 [perspective:1000px]">
               <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] ">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-rose-300 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
@@ -81,9 +96,42 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>  */}
 
-            <div className="group h-80 w-80 [perspective:1000px]">
+
+      {cards.map((card, index) => (
+        <div
+          key={index}
+          className="group h-80 w-80 m-4 [perspective:1000px]"
+          onClick={() => handleClick(index)}
+        >
+          <div
+            className={`relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] ${
+              flippedCardIndex === index ? '[transform:rotateY(180deg)]' : ''
+            }`}
+          >
+            <div className={`absolute inset-0 h-full w-full rounded-xl shadow-xl shadow-black/40 [backface-visibility:hidden] ${
+          index % 2 === 0 ? 'bg-rose-300' : 'bg-darkrose'}`}>
+              <div className="flex min-h-full flex-col items-center justify-center">
+                <h1 className="text-3xl font-bold">{card.title}</h1>
+              </div>
+            </div>
+            <div className={`absolute inset-0 h-full w-full rounded-xl bg-darkrose px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden] ${index % 2 === 0 ? 'bg-lightpinkans' : 'bg-pinkans'}`}>
+              <div className="flex min-h-full flex-col items-center justify-center">
+                <h1 className="text-3xl font-bold">{card.title}</h1>
+                <p className="text-sm">ADJ</p>
+                <p className="text-lg hover:scale-110 transition-all duration-300">{card.description}</p>
+                <p className="mt-2 rounded-md  py-1 px-2 text-sm hover:scale-110 transition-all duration-300">
+                      Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
+                    </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    
+
+            {/* <div className="group h-80 w-80 [perspective:1000px]">
               <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-darkrose shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
@@ -181,7 +229,7 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
               
 
 
@@ -205,7 +253,39 @@ function App() {
         <div className='mt-10 md:mt-0 bg-cover flex flex-col items-center justify-center '>
             <div className='max-h-[calc(100vh-4rem)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 [perspective:1000px]'>
 
-            <div className="group h-80 w-80 [perspective:1000px]">
+
+            {cards.map((card, index) => (
+              <div
+                key={index}
+                className="group h-80 w-80 m-4 [perspective:1000px]"
+                onClick={() => handleClick(index)}
+              >
+                <div
+                  className={`relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] ${
+                    flippedCardIndex === index ? '[transform:rotateY(180deg)]' : ''
+                  }`}
+                >
+                  <div className={`absolute inset-0 h-full w-full rounded-xl shadow-xl shadow-black/40 [backface-visibility:hidden] ${
+                index % 2 === 0 ? 'bg-blue_1' : 'bg-blue_2'}`}>
+                    <div className="flex min-h-full flex-col items-center justify-center">
+                      <h1 className="text-3xl font-bold">{card.title}</h1>
+                    </div>
+                  </div>
+                  <div className={`absolute inset-0 h-full w-full rounded-xl px-12 text-center text-slate-900 [transform:rotateY(180deg)] [backface-visibility:hidden] ${index % 2 === 0 ? 'bg-blue_ans' : 'bg-darkblue_ans'}`}>
+                    <div className="flex min-h-full flex-col items-center justify-center">
+                      <h1 className="text-3xl font-bold">{card.title}</h1>
+                      <p className="text-sm">ADJ</p>
+                      <p className="text-lg hover:scale-110 transition-all duration-300">{card.description}</p>
+                      <p className="mt-2 rounded-md  py-1 px-2 text-sm hover:scale-110 transition-all duration-300">
+                            Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.
+                          </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* <div className="group h-80 w-80 [perspective:1000px]">
               <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-1000 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-blue_1 shadow-xl shadow-black/40 [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
@@ -323,7 +403,7 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
               
 
 
