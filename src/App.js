@@ -8,6 +8,11 @@ function App() {
   const [flippedCardIndex, setFlippedCardIndex] = useState(null);
   const [cards, setCards] = useState([]);
 
+  const [adminMode, setAdminMode] = useState(false);
+
+const handleAdminClick = () => {
+  setAdminMode(true); // Trigger the animations when "Admin" is clicked
+};
 
   useEffect(() => {
     // Fetch cards from the API
@@ -72,12 +77,74 @@ function App() {
   // console.log("cards info=", cards[0]);
   return (
     <div>
+{/*       
       <section id='pg1' className={`flex items-center justify-center h-screen ${currentPage === 'pg1' ? '' : 'hidden'}`}>
+      <div className=" xl:block absolute top-4 left-4 bg-pinkbrown w-16 h-14 border-4 border-black  rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={() => handlePageChange('login')}>
+        <h1 className="text-2xl mt-3 font-bryndan text-center">Admin!</h1>
+      </div>
         <div className="flex flex-col justify-center align-middle bg-babyyellow w-80 sm:w-1/2 h-64 md:h-80 border-4 border-black p-8 rounded-2xl scale-100 transition-all duration-300    cursor-pointer animate-bounce-slow hover:scale-110 hover:bg-yellow-200 hover:border-black " onClick={() => handlePageChange('pg2')}>
           <h1 className='text-5xl lg:text-9xl font-bryndan text-center'>Let's get started!</h1>
         </div>
       </section>
 
+      <section id='login' className={`flex flex-row items-center justify-between h-screen ${currentPage === 'login' ? '' : 'hidden'}`}>
+       
+        <div className="hidden xl:block absolute top-4 left-4 bg-pinkbrown w-16 h-14 border-4 border-black  rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={() => handlePageChange('pg1')}>
+              <h1 className="text-2xl mt-3 font-bryndan text-center">Back!</h1>
+        </div>
+        <div className="flex flex-col justify-center ml-5 items-center bg-babyyellow w-1/2 h-64 border-r-4 border-black p-8 rounded-2xl scale-100 transition-all duration-300 cursor-pointer animate-bounce-slow hover:scale-110 hover:bg-yellow-200 hover:border-black"
+        >
+          <h1 className='text-5xl lg:text-7xl font-bryndan text-center'>Welcome Back Admin!</h1>
+        </div>
+
+       
+        <div className="flex flex-col justify-center items-center mr-5 ml-5 w-1/2 h-5/6 bg-snuff border-l-4 border-black p-8 rounded-2xl ">
+          <h1 className='text-4xl font-bold mb-10'>Login</h1>
+          <form className="flex flex-col w-3/4">
+            <label htmlFor="username" className="text-xl mb-2">Username</label>
+            <input type="text" id="username" className="p-2 border-2 border-black mb-6 rounded-md" />
+
+            <label htmlFor="password" className="text-xl mb-2">Password</label>
+            <input type="password" id="password" className="p-2 border-2 border-black mb-6 rounded-md" />
+
+            <button type="submit" className="mt-4 p-2 bg-yellow-200 border-2 border-black rounded-md hover:bg-yellow-300">
+              Submit
+            </button>
+          </form>
+        </div>
+      </section>
+       */}
+
+
+<section id='pg1' className="flex items-center justify-center h-screen ">
+    {/* Admin Button */}
+    <div className=" xl:block absolute top-4 left-4 bg-pinkbrown w-16 h-14 border-4 border-black rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={handleAdminClick}>
+      <h1 className="text-2xl mt-3 font-bryndan text-center">Admin!</h1>
+    </div>
+
+    {/* Let's Get Started Div */}
+    <div className={`flex flex-col justify-center align-middle bg-babyyellow h-64 md:h-80 border-4 border-black p-8 rounded-2xl scale-100 transition-all duration-500 ease-in-out transform ${adminMode ? 'w-3/6 md:w-2/6 translate-x-[-10%]' : 'w-80 sm:w-1/2'}`}>
+      <h1 className={` font-bryndan text-center transition-all duration-1000 ease-in-out transform  ${adminMode ? 'text-7xl' : 'text-8xl'}`}>
+        Let's get started!
+      </h1>
+    </div>
+
+    {/* Login Form (appears when adminMode is true) */}
+    <div className={`flex flex-col justify-center items-center w-1/2 h-5/6 bg-snuff border-l-4 border-black p-8 rounded-2xl transition-opacity duration-500 ease-in-out ${adminMode ? 'opacity-100 translate-x-[0%]' : 'opacity-0 translate-x-[100%] hidden'}`}>
+      <h1 className='text-4xl font-bold mb-10'>Login</h1>
+      <form className="flex flex-col w-3/4">
+        <label htmlFor="username" className="text-xl mb-2">Username</label>
+        <input type="text" id="username" className="p-2 border-2 border-black mb-6 rounded-md" />
+
+        <label htmlFor="password" className="text-xl mb-2">Password</label>
+        <input type="password" id="password" className="p-2 border-2 border-black mb-6 rounded-md" />
+
+        <button type="submit" className="mt-4 p-2 bg-yellow-200 border-2 border-black rounded-md hover:bg-yellow-300">
+          Submit
+        </button>
+      </form>
+    </div>
+  </section>
       <section id='pg2' className={`flex flex-col items-center justify-center h-screen ${currentPage === 'pg2' ? '' : 'hidden'}`}>
       
       <div className="hidden xl:block absolute top-4 left-4 bg-pinkbrown w-16 h-14 border-4 border-black  rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={() => handlePageChange('pg1')}>
