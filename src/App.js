@@ -115,21 +115,18 @@ const handleAdminClick = () => {
       </section>
        */}
 
-
+{/* 
 <section id='pg1' className="flex items-center justify-center h-screen ">
-    {/* Admin Button */}
     <div className=" xl:block absolute top-4 left-4 bg-pinkbrown w-16 h-14 border-4 border-black rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={handleAdminClick}>
       <h1 className="text-2xl mt-3 font-bryndan text-center">Admin!</h1>
     </div>
 
-    {/* Let's Get Started Div */}
     <div className={`flex flex-col justify-center align-middle bg-babyyellow h-64 md:h-80 border-4 border-black p-8 rounded-2xl scale-100 transition-all duration-500 ease-in-out transform ${adminMode ? 'w-3/6 md:w-2/6 translate-x-[-10%]' : 'w-80 sm:w-1/2'}`}>
       <h1 className={` font-bryndan text-center transition-all duration-1000 ease-in-out transform  ${adminMode ? 'text-7xl' : 'text-8xl'}`}>
         Let's get started!
       </h1>
     </div>
 
-    {/* Login Form (appears when adminMode is true) */}
     <div className={`flex flex-col justify-center items-center w-1/2 h-5/6 bg-snuff border-l-4 border-black p-8 rounded-2xl transition-opacity duration-500 ease-in-out ${adminMode ? 'opacity-100 translate-x-[0%]' : 'opacity-0 translate-x-[100%] hidden'}`}>
       <h1 className='text-4xl font-bold mb-10'>Login</h1>
       <form className="flex flex-col w-3/4">
@@ -144,7 +141,42 @@ const handleAdminClick = () => {
         </button>
       </form>
     </div>
-  </section>
+  </section>  */}
+
+    <section id='admin' className='mt-12 flex flex-col items-center   h-screen '>
+      
+    <div className={`flex flex-col justify-center align-middle items-center bg-pinkans h-48 md:h-80 border-4 border-black p-8 rounded-2xl scale-100 transition-all duration-500 ease-in-out transform ${adminMode ? 'w-3/6 md:w-2/6 translate-x-[-10%]' : 'w-80 sm:w-1/2'}`}>
+      <h1 className={`font-bryndan text-center transition-all duration-1000 ease-in-out transform text-6xl md:text-8xl `}>
+        What's new today?
+      </h1>
+    </div>
+
+    <div className='mt-8 md:mt-14 flex flex-col md:flex-row justify-evenly gap-8 md:gap-40 '>
+      <div className='flex flex-col justify-center align-middle items-center bg-blue_btn border-black p-12 rounded-2xl scale-100 hover:scale-110 transition-all duration-500 ease-in-out' >
+        <h1 className={`font-bryndan text-center transition-all duration-1000 ease-in-out transform  ${adminMode ? 'text-4xl' : 'text-5xl'}`}>
+          Create flashcard
+        </h1>
+      </div>
+
+      <div className='flex flex-col justify-center align-middle items-center bg-blue_2 border-black p-12 rounded-2xl scale-100 hover:scale-110 transition-all duration-500 ease-in-out' >
+        <h1 className={`font-bryndan text-center transition-all duration-1000 ease-in-out transform  ${adminMode ? 'text-4xl' : 'text-5xl'}`}>
+          Delete flashcard
+        </h1>
+      </div>
+    </div>
+
+    <div className={`mt-10 flex flex-col justify-center align-middle items-center  bg-lightpinkans border-4 border-black p-12 rounded-2xl scale-100 hover:scale-110 transition-all duration-500 ease-in-out`}>
+      <h1 className={`font-bryndan text-center transition-all duration-1000 ease-in-out transform  ${adminMode ? 'text-4xl' : 'text-5xl'}`}>
+       Edit flashcard
+      </h1>
+    </div>
+    
+
+
+    </section>
+ 
+
+
       <section id='pg2' className={`flex flex-col items-center justify-center h-screen ${currentPage === 'pg2' ? '' : 'hidden'}`}>
       
       <div className="hidden xl:block absolute top-4 left-4 bg-pinkbrown w-16 h-14 border-4 border-black  rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={() => handlePageChange('pg1')}>
