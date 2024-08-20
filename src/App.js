@@ -114,15 +114,15 @@ const handleAdminClick = () => {
         </div>
       </section>
        */}
-
 {/* 
-<section id='pg1' className="flex items-center justify-center h-screen ">
+
+<section id='pg1' className={`flex items-center justify-center h-screen ${currentPage === 'pg1' ? '' : 'hidden'}`}>
     <div className=" xl:block absolute top-4 left-4 bg-pinkbrown w-16 h-14 border-4 border-black rounded-2xl scale-100 hover:bg-pink-200 hover:scale-110 hover:border-black transition-all duration-300 cursor-pointer flex items-center justify-center" onClick={handleAdminClick}>
       <h1 className="text-2xl mt-3 font-bryndan text-center">Admin!</h1>
     </div>
 
     <div className={`flex flex-col justify-center align-middle bg-babyyellow h-64 md:h-80 border-4 border-black p-8 rounded-2xl scale-100 transition-all duration-500 ease-in-out transform ${adminMode ? 'w-3/6 md:w-2/6 translate-x-[-10%]' : 'w-80 sm:w-1/2'}`}>
-      <h1 className={` font-bryndan text-center transition-all duration-1000 ease-in-out transform  ${adminMode ? 'text-7xl' : 'text-8xl'}`}>
+      <h1 className={` font-bryndan text-center transition-all duration-1000 ease-in-out transform  ${adminMode ? 'text-7xl' : 'text-8xl'}`} onClick={() => handlePageChange('pg2')}>
         Let's get started!
       </h1>
     </div>
@@ -141,9 +141,9 @@ const handleAdminClick = () => {
         </button>
       </form>
     </div>
-  </section>  */}
+  </section>    */}
 
-    <section id='admin' className='mt-12 flex flex-col items-center   h-screen '>
+    {/* <section id='admin' className='mt-12 flex flex-col items-center   h-screen '>
       
     <div className={`flex flex-col justify-center align-middle items-center bg-pinkans h-48 md:h-80 border-4 border-black p-8 rounded-2xl scale-100 transition-all duration-500 ease-in-out transform ${adminMode ? 'w-3/6 md:w-2/6 translate-x-[-10%]' : 'w-80 sm:w-1/2'}`}>
       <h1 className={`font-bryndan text-center transition-all duration-1000 ease-in-out transform text-6xl md:text-8xl `}>
@@ -173,9 +173,47 @@ const handleAdminClick = () => {
     
 
 
-    </section>
- 
+    </section> */}
 
+    <section id='createpg' className='mt-12 flex flex-col items-center   h-screen '>
+      <div className={`flex flex-col justify-center align-middle items-center bg-pinkans h-40 w-1/2 border-4 border-black rounded-2xl scale-100 transition-all duration-500 ease-in-out transform `}>
+        <h1 className={`font-bryndan text-center transition-all duration-1000 ease-in-out transform text-6xl md:text-7xl `}>
+          Create Flashcard!
+        </h1>
+      </div>
+      <div className={`mt-8 flex flex-col justify-center align-middle items-start bg-pinkbg h-4/6 w-5/6 border-4 border-black rounded-2xl scale-100 transition-all duration-500 ease-in-out transform `}>
+      
+      <div className='mt-2 ml-6 flex flex-row items-center space-x-4'>
+      <label htmlFor="username" className="font-bryndan text-6xl whitespace-nowrap">Enter word</label>
+      <input type="text" id="username" className="mb-2 p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
+    </div>
+
+    <div className='mt-2 ml-6 w-11/12 flex flex-row items-center space-x-4'>
+      <label htmlFor="username" className="font-bryndan text-6xl whitespace-nowrap">Definition</label>
+      <input type="text" id="username" className="mb-2 p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
+    </div>
+
+    <div className='mt-2 ml-6 flex flex-row items-center space-x-4'>
+      <label htmlFor="username" className="font-bryndan text-6xl whitespace-nowrap">Type</label>
+      <input type="text" id="username" className="mb-2 p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
+    </div>
+
+    <div className='ml-6 w-11/12 flex flex-row items-center space-x-4'>
+      <label htmlFor="username" className="font-bryndan text-6xl ">Sentence with word</label>
+      <input type="text" id="username" className="p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
+    </div>
+
+            
+            
+    <div className='flex flex-col items-center justify-center'>
+      <button type="submit" className="mt-8 p-8 bg-yellow-200 border-2 border-black rounded-md hover:bg-yellow-300">
+        Submit
+      </button>
+    </div>
+          
+
+      </div>
+    </section> 
 
       <section id='pg2' className={`flex flex-col items-center justify-center h-screen ${currentPage === 'pg2' ? '' : 'hidden'}`}>
       
