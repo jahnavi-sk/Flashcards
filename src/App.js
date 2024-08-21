@@ -2,29 +2,49 @@ import './App.css';
 import 'boxicons'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import UserTable from './UserData.js'
 
 function App() {
   
   const [flippedCardIndex, setFlippedCardIndex] = useState(null);
   const [cards, setCards] = useState([]);
+  const [entries, setEntry] = useState([]);
+
 
   const [adminMode, setAdminMode] = useState(false);
 
-const handleAdminClick = () => {
-  setAdminMode(true); // Trigger the animations when "Admin" is clicked
-};
+  const handleAdminClick = () => {
+    setAdminMode(true); // Trigger the animations when "Admin" is clicked
+  };
 
   useEffect(() => {
     // Fetch cards from the API
     axios.get('/api/cards')
       .then((response) => {
         setCards(response.data); // Save data to state
-        console.log("rsp=", response.data)
+        // console.log("rsp=", response.data)
       })
       .catch((error) => {
         console.error("There was an error fetching the cards!", error);
       });
   }, []);
+
+
+
+  useEffect(() => {
+    // Fetch cards from the API
+    axios.get('/api/edit')
+      .then((response) => {
+        setEntry(response.data); // Save data to state
+        console.log("rsp2=", response.data)
+        // console.log("response", response)
+      })
+      .catch((error) => {
+        console.error("There was an error editing the cards!", error);
+      });
+  }, []);
+
+
 
   const handleClick = (index) => {
     setFlippedCardIndex(flippedCardIndex === index ? null : index);
@@ -40,8 +60,7 @@ const handleAdminClick = () => {
   // ];
 
   
-
-
+  
 
   const [currentPage, setCurrentPage] = useState('pg1');
 
@@ -173,7 +192,7 @@ const handleAdminClick = () => {
     </div>
 </section>  */}
 
-
+{/* 
     <section id='createpg' className='mt-12 flex flex-col items-center   h-screen '>
       <div className={`flex flex-col justify-center align-middle items-center bg-pinkans h-40 w-1/2 border-4 border-black rounded-2xl scale-100 transition-all duration-500 ease-in-out transform `}>
         <h1 className={`font-bryndan text-center transition-all duration-1000 ease-in-out transform text-6xl md:text-7xl `}>
@@ -200,16 +219,16 @@ const handleAdminClick = () => {
       <input type="text" id="username" className="mb-2 p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
     </div>
 
-    <div className='ml-6 w-11/12 flex flex-row items-center space-x-4'>
+    <div className='ml-6 mt-2 w-11/12 flex flex-row items-center space-x-4'>
       <label htmlFor="username" className="font-bryndan text-6xl ">Sentence with word</label>
-      <input type="text" id="username" className="p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
+      <input type="text" id="username" className="mb-2 p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
     </div>
 
             
             
     <div className='flex flex-col align-center justify-center items-center w-full'>
       <div>
-      <button type="submit" className="mt-8 p-10 bg-lightpinkans border-2 border-black rounded-md hover:bg-yellow-300">
+      <button type="submit" className="text-3xl font-bryndan flex justify-center items-center mt-8 p-10 h-12 bg-snuff scale-100 hover:scale-110 transition-all duration-300 cursor-pointer  hover:bg-lightpinkans text-center border-2 border-black rounded-md">
         Submit
       </button>
       </div>
@@ -219,6 +238,101 @@ const handleAdminClick = () => {
 
       </div>
     </section>  
+ */}
+
+
+<section id='editpg' className='mt-12 flex flex-col items-center   h-screen '>
+      <div className={`flex flex-col justify-center align-middle items-center bg-pinkans h-40 w-1/2 border-4 border-black rounded-2xl scale-100 transition-all duration-500 ease-in-out transform `}>
+        <h1 className={`font-bryndan text-center transition-all duration-1000 ease-in-out transform text-6xl md:text-7xl `}>
+          Edit Flashcard!
+        </h1>
+      </div>
+    
+      <table className='mt-8 w-3/4'>
+        <thead>
+          <tr>
+            <th>Delete</th>
+            <th>Edit</th>
+            <th>Word</th>
+            <th>Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          {entries.map((entry, index) => (
+            <tr key={index}>
+              <td>
+                <div 
+                  // onClick={() => handleDelete(entry.word)} 
+                  className='w-8 h-8 bg-red-500 rounded-full cursor-pointer'
+                />
+              </td>
+              <td>
+                <div 
+                  // onClick={() => handleEdit(entry.word)} 
+                  className='w-8 h-8 bg-blue-500 rounded-full cursor-pointer'
+                />
+              </td>
+              <td>{entry.word}</td>
+              <td>{entry.definition}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+
+</section>
+
+
+{/* 
+<section id='editpg2' className='mt-12 flex flex-col items-center   h-screen '>
+<div className={`flex flex-col justify-center align-middle items-center bg-pinkans h-40 w-1/2 border-4 border-black rounded-2xl scale-100 transition-all duration-500 ease-in-out transform `}>
+        <h1 className={`font-bryndan text-center transition-all duration-1000 ease-in-out transform text-6xl md:text-7xl `}>
+          Edit Flashcard!
+        </h1>
+      </div>
+      <div className={`mt-8 flex flex-col justify-center align-middle items-start bg-pinkbg h-4/6 w-5/6 border-4 border-black rounded-2xl scale-100 transition-all duration-500 ease-in-out transform `}>
+      
+      
+
+
+      <div className='mt-2 ml-6 flex flex-row items-center space-x-4'>
+      <label htmlFor="username" className="font-bryndan text-6xl whitespace-nowrap">Enter word</label>
+      <input type="text" id="username" className="mb-2 p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
+    </div>
+
+    <div className='mt-2 ml-6 w-11/12 flex flex-row items-center space-x-4'>
+      <label htmlFor="username" className="font-bryndan text-6xl whitespace-nowrap">Definition</label>
+      <input type="text" id="username" className="mb-2 p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
+    </div>
+
+    <div className='mt-2 ml-6 flex flex-row items-center space-x-4'>
+      <label htmlFor="username" className="font-bryndan text-6xl whitespace-nowrap">Type</label>
+      <input type="text" id="username" className="mb-2 p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
+    </div>
+
+    <div className='ml-6 mt-2 w-11/12 flex flex-row items-center space-x-4'>
+      <label htmlFor="username" className="font-bryndan text-6xl ">Sentence with word</label>
+      <input type="text" id="username" className="mb-2 p-7 border-2 border-black  rounded-md w-full bg-pinkans" />
+    </div>
+
+            
+            
+    <div className='flex flex-col align-center justify-center items-center w-full'>
+      <div>
+      <button type="submit" className="text-3xl font-bryndan flex justify-center items-center mt-8 p-10 h-12 bg-snuff scale-100 hover:scale-110 transition-all duration-300 cursor-pointer  hover:bg-lightpinkans text-center border-2 border-black rounded-md">
+        Submit
+      </button>
+      </div>
+      
+    </div>
+          
+
+      </div>
+</section> */}
+
+
+
+
 
       <section id='pg2' className={`flex flex-col items-center justify-center h-screen ${currentPage === 'pg2' ? '' : 'hidden'}`}>
       
