@@ -248,32 +248,26 @@ function App() {
         </h1>
       </div>
     
-      <table className='mt-8 w-3/4'>
+      <table className='mt-8 w-3/4 border-collapse border border-black'>
         <thead>
           <tr>
-            <th>Delete</th>
-            <th>Edit</th>
-            <th>Word</th>
-            <th>Definition</th>
+          <th className='border border-black p-2 text-start'>Delete</th>
+            <th className='border border-black p-2 text-start'>Edit</th>
+            <th className='border border-black p-2 text-start'>Word</th>
+            <th className='border border-black p-2 text-start'>Definition</th>
           </tr>
         </thead>
         <tbody>
           {entries.map((entry, index) => (
             <tr key={index}>
-              <td>
-                <div 
-                  // onClick={() => handleDelete(entry.word)} 
-                  className='w-8 h-8 bg-red-500 rounded-full cursor-pointer'
-                />
+              <td className='border border-black p-2'>
+              <box-icon class="size-10 scale-100 hover:scale-110 transition-all duration-300 cursor-pointer " name='message-alt-x' color='#fb0404' ></box-icon>
               </td>
-              <td>
-                <div 
-                  // onClick={() => handleEdit(entry.word)} 
-                  className='w-8 h-8 bg-blue-500 rounded-full cursor-pointer'
-                />
+              <td className='border border-black p-2'>
+              <box-icon class="size-10  scale-100 hover:scale-110 transition-all duration-300 cursor-pointer" name='edit-alt' color='green' ></box-icon>
               </td>
-              <td>{entry.word}</td>
-              <td>{entry.definition}</td>
+              <td className='border border-black p-2'>{entry.word}</td>
+              <td className='border border-black p-2'>{entry.definition}</td>
             </tr>
           ))}
         </tbody>
