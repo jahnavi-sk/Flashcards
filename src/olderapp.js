@@ -8,25 +8,55 @@ import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the 
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the Data Grid
 import { useReactTable } from '@tanstack/react-table'
 
+import { 
+     useReactTable,
+     getCoreRowModel,
+     getPaginationRowModel,
+     getSortedRowModel
+   } from '@tanstack/react-table';
 
 function App() {
   
 
+  const tableInstance = useReactTable({
+         columns,
+         data,
+         getCoreRowModel: getCoreRowModel(),
+         getPaginationRowModel: getPaginationRowModel(),
+         getSortedRowModel: getSortedRowModel(), //order doesn't matter anymore!
+         // etc.
+       });
 
+
+       columnHelper.accessor('firstName', { //accessorKey
+            header: 'First Name',
+          }),
+          columnHelper.accessor(row => row.lastName, { //accessorFn
+            header: () => <span>Last Name</span>,
+          })
   const [rowData, setRowData] = useState([]);
-  const [paginationPageSize] = useState(12);
   const [colDefs, setColDefs] = useState([]);
-  const [selectedRows, setSelectedRows] = useState([]); // State to store selected rows
+//   const [rowData, setRowData] = useState([
+//     { word: 'Tesla', definition: 'definition Y', type: 64950, sentence: "true" },
+//     { word: 'Ford', definition: 'F-Series', type: 33850, sentence: "false" },
+//     { word: 'Toyota', definition: 'Corolla', type: 29600, sentence: "false" },
+//     { word: 'Mercedes', definition: 'EQA', type: 48890, sentence: "true" },
+//     { word: 'Fiat', definition: '500', type: 15774, sentence: "false" },
+//     { word: 'Nissan', definition: 'Juke', type: 20675, sentence: "false" },
+// ]);
+
+// // Column Definitions: Defines & controls grid columns.
+// const [colDefs, setColDefs] = useState([
+//     { field: 'word' },
+//     { field: 'definition' },
+//     { field: 'type' },
+//     { field: 'sentence' },
+// ]);
+
 const defaultColDef = {
     flex: 1,
 };
 
-const onSelectionChanged = (event) => {
-  const selectedNodes = event.api.getSelectedNodes();
-  const selectedData = selectedNodes.map(node => node.data);
-  setSelectedRows(selectedData);
-  console.log("Selected Rows:", selectedData);
-};
   
 
   const [flippedCardIndex, setFlippedCardIndex] = useState(null);
@@ -62,19 +92,6 @@ const onSelectionChanged = (event) => {
 
         const data = response.data;
         const columns = Object.keys(data[0]).map(key => ({ field: key }));
-
-        columns.push({
-          headerName: 'Actions',
-          field: 'actions',
-          cellRenderer: (params) => (
-            <div className="flex items-center">
-              <box-icon class='scale-100 hover:scale-125 transition-all duration-300 cursor-pointer' name='edit-alt' type='solid' color='#0b73f7' ></box-icon>
-              <box-icon class='ml-4 scale-100 hover:scale-125 transition-all duration-300 cursor-pointer' name='message-alt-x' color='#f70b0b' ></box-icon>
-            </div>
-          )
-        });
-
-
         setColDefs(columns);
 
         setRowData(data);
@@ -93,6 +110,16 @@ const onSelectionChanged = (event) => {
   const handleClick = (index) => {
     setFlippedCardIndex(flippedCardIndex === index ? null : index);
   };
+  
+  // const cards = [
+  //   { word: 'Implacable', definition: 'Incapable of being pacified.', type:'ADJ', example:'Madame Defarge was the implacable enemy of the Evermonde family' },
+  //   { word: 'Irrevocable', definition: 'Unalterable, Irreversible', type:'ADJ', example:'As Sue dropped the letter into the mailbox, she suddenly had seconf thoughts and wanted to take it back, but she could not; her action was irrevocable.' },
+  //   { word: 'Anarchist', definition: 'A person who seeks to overturn the established government; advocate of abolishing authority',type:'ADJ', example:'Denying she was an anarchist, Katya maintained she wished only to make changes in our government, not to destroy it entirely.' },
+  //   { word: 'Panache', definition: 'Flair; Flamboyance', type:'N', example: 'Many perfomers imitate Noel Coward, but few have his panache and sense of style.'},
+  //   { word: 'Mogul', definition: 'A powerful person.', type:'ADJ', example:'The oil moguls made great profits when the price of gasoline rose.' },
+  //   { word: 'Ramification', definition: 'Branching out; subdivision', type:'N', example:'We must examine all the ramifications of this problem.' },
+  // ];
+
   
   
 
@@ -307,13 +334,11 @@ const onSelectionChanged = (event) => {
         </tbody>
       </table> */}
       
-      <div className="mt-10 ag-theme-quartz-dark w-2/3 h-2/3">
-            <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} pagination={true} rowSelection="multiple" paginationPageSize={paginationPageSize} // Allow multiple row selection
-        onSelectionChanged={onSelectionChanged} // Handle row selection
-          />
+      <div className="mt-10 ag-theme-quartz-dark w-2/3 h-80">
+            <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} />
       </div>
 
-      
+
  
 </section>
 

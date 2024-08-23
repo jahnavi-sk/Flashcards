@@ -126,3 +126,14 @@ body {
 /* .animate-bounce-slow {
   animation: bounce-slow 2s infinite;
 } */
+
+
+.ag-theme-mycustomtheme {
+  /* customise with CSS variables */
+  --ag-grid-size: 8px;
+  --ag-border-color: red;
+}
+.mycustomtheme  {
+  /* or with CSS selectors targeting grid DOM elements */
+  font-style: italic;
+}
